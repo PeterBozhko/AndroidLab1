@@ -8,28 +8,28 @@
     android:orientation="vertical"
     android:gravity="center">
         <Button
-            android:id="@+id/button"
+            android:id="@+id/task_1_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/buttons_margin"
             android:text="Task 1" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/task_2_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/buttons_margin"
             android:text="Task 2" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/task_3_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/buttons_margin"
             android:text="Task 3" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/buttons_margin"
@@ -40,21 +40,22 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton"
+                android:id="@+id/decrease_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:layout_margin="@dimen/buttons_margin"
                 app:srcCompat="@android:drawable/ic_media_play"
-                android:rotation="180"/>
+                android:rotation="180"
+                android:contentDescription="TODO" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton2"
+                android:id="@+id/increase_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:layout_margin="@dimen/buttons_margin"
                 app:srcCompat="@android:drawable/ic_media_play"
-                />
+                android:contentDescription="TODO" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>
