@@ -3,66 +3,66 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_marginHorizontal="30dp"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="30dp">
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="30dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/copter"
+        app:layout_constraintBottom_toTopOf="@id/title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/title"
-        android:layout_marginTop="48dp"
-        tools:srcCompat="@tools:sample/avatars"
-        android:contentDescription="TODO" />
+        tools:srcCompat="@drawable/copter_icon" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="70dp"
-        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/image"
         app:layout_constraintStart_toStartOf="@+id/image"
-        app:layout_constraintTop_toBottomOf="@+id/image"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/image" />
 
     <TextView
         android:id="@+id/nat_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@id/nat_btn"
-        app:layout_constraintTop_toTopOf="@+id/nat_btn"
+        android:layout_marginHorizontal="30dp"
+        android:textSize="@dimen/regular_text_size"
         app:layout_constraintBottom_toBottomOf="@id/nat_btn"
-        app:layout_constraintStart_toEndOf="@id/description"/>
+        app:layout_constraintEnd_toStartOf="@id/nat_btn"
+        app:layout_constraintStart_toEndOf="@id/description"
+        app:layout_constraintTop_toTopOf="@+id/nat_btn" />
 
     <TextView
         android:id="@+id/fib_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@id/fib_btn"
-        app:layout_constraintTop_toTopOf="@+id/fib_btn"
+        android:textSize="@dimen/regular_text_size"
         app:layout_constraintBottom_toBottomOf="@id/fib_btn"
-        app:layout_constraintStart_toEndOf="@id/description" />
+        app:layout_constraintEnd_toStartOf="@id/fib_btn"
+        app:layout_constraintStart_toEndOf="@id/description"
+        app:layout_constraintTop_toTopOf="@+id/fib_btn" />
 
     <TextView
         android:id="@+id/col_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@id/col_btn"
-        app:layout_constraintTop_toTopOf="@+id/col_btn"
+        android:textSize="@dimen/regular_text_size"
         app:layout_constraintBottom_toBottomOf="@id/col_btn"
-        app:layout_constraintStart_toEndOf="@id/description" />
+        app:layout_constraintEnd_toStartOf="@id/col_btn"
+        app:layout_constraintStart_toEndOf="@id/description"
+        app:layout_constraintTop_toTopOf="@+id/col_btn" />
 
     <TextView
         android:id="@+id/description"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@id/nat_text_view"
         app:layout_constraintStart_toStartOf="@+id/icon"
         app:layout_constraintTop_toBottomOf="@+id/icon" />
 
@@ -70,37 +70,38 @@
         android:id="@+id/nat_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NAT"
+        android:text="@string/natural"
+        app:layout_constraintBottom_toTopOf="@id/fib_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/fib_btn"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/fib_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FIB"
+        android:text="@string/fibonacci"
+        app:layout_constraintBottom_toTopOf="@id/col_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nat_btn"
-        app:layout_constraintBottom_toTopOf="@id/col_btn"/>
+        app:layout_constraintTop_toBottomOf="@id/nat_btn" />
 
     <Button
         android:id="@+id/col_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="COL"
+        android:text="@string/collatz"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fib_btn"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/fib_btn" />
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="65dp"
-        android:layout_height="51dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="30dp"
         app:layout_constraintStart_toEndOf="@+id/image"
         app:layout_constraintTop_toTopOf="@+id/image"
-        app:layout_constraintEnd_toStartOf="@id/nat_text_view"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/copter" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

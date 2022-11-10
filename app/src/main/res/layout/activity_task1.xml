@@ -22,7 +22,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="Copter"
+                android:contentDescription="@string/copter"
                 android:scaleType="fitCenter"
                 android:src="@drawable/copter"
                 android:layout_marginTop="30dp"/>
@@ -30,13 +30,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:text="Multirotors"/>
+                android:text="@string/mutlirotors"/>
         </FrameLayout>
         <ListView
             android:id="@+id/list_view"
             android:layout_marginHorizontal="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10sp"
             android:layout_weight="4"/>
     </LinearLayout>
     <TextView
@@ -49,7 +51,7 @@
         android:layout_marginTop="12dp"
         android:textSize="24sp"
         android:gravity="center"
-        android:text="Label"/>
+        android:text="@string/title"/>
     <EditText
         android:id="@+id/edit_text"
         android:layout_width="match_parent"
@@ -58,7 +60,9 @@
         android:layout_marginTop="12dp"
         android:gravity="center"
         android:layout_weight="1"
-        android:hint="Hello"/>
+        android:hint="@string/hello"
+        android:autofillHints=""
+        android:inputType="text" />
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
@@ -75,7 +79,7 @@
             />
         <TextView
             android:layout_width="wrap_content"
-            android:text="Change label color"
+            android:text="@string/change_label_color"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
@@ -99,14 +103,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Hide List" />
+                android:text="@string/hide_list" />
 
             <Button
                 android:id="@+id/show_toast_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Toast" />
+                android:text="@string/toast" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -115,7 +119,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:clickable="true"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
+            app:srcCompat="@drawable/ic_launcher_foreground"
+            android:contentDescription="@string/accept_text" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
