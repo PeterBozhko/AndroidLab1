@@ -11,9 +11,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
-    var score: Int = 0
-    val scoreKey = "score"
-    lateinit var sharedPref :SharedPreferences
+    private var score: Int = 0
+    private val scoreKey = "score"
+    private lateinit var sharedPref :SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -43,14 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun setOnClickListeners(){
-
-    }
-
-
-
-
-    fun saveScore(){
+    private fun saveScore(){
         with (sharedPref.edit()) {
             putInt(scoreKey, score)
             apply()

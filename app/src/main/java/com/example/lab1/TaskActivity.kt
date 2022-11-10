@@ -1,5 +1,6 @@
 package com.example.lab1
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -7,7 +8,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
-import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,14 +18,22 @@ import kotlin.random.Random
 
 class TaskActivity : AppCompatActivity() {
     // набор данных, которые свяжем со списком
-    lateinit var copters: MutableList<ItemModel>
+    private lateinit var copters: MutableList<ItemModel>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task1)
         val coptersList: ListView = findViewById(R.id.list_view)
         initData()
         val myAdapter= MyAdapter(applicationContext, copters)
-        coptersList.setAdapter(myAdapter)
+        coptersList.adapter = myAdapter
+        coptersList.setOnItemClickListener { _, _, i, _ ->
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra("Title", copters[i].title)
+            intent.putExtra("Description", copters[i].descriprion)
+            intent.putExtra("Icon", copters[i].icon.res)
+            startActivity(intent)
+        }
+
         val labelTextView = findViewById<TextView>(R.id.label_text_view)
         val editText = findViewById<EditText>(R.id.edit_text)
         val setTextBtn = findViewById<FloatingActionButton>(R.id.set_text_btn)
@@ -34,10 +42,10 @@ class TaskActivity : AppCompatActivity() {
         }
 
         val changeColorSwitch = findViewById<SwitchCompat>(R.id.change_color_switch)
-        changeColorSwitch.setOnCheckedChangeListener { compoundButton, b ->
-            if (b){
+        changeColorSwitch.setOnCheckedChangeListener { _, b ->
+            if (b) {
                 supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.argb(255, Random.nextInt(256), Random.nextInt(256), Random.nextInt(256))))
-            }else{supportActionBar?.setBackgroundDrawable(ColorDrawable(getColor(R.color.purple_700)))}
+            } else{supportActionBar?.setBackgroundDrawable(ColorDrawable(getColor(R.color.purple_700)))}
         }
 
         val hideListBtn = findViewById<Button>(R.id.hide_list_btn)
@@ -54,14 +62,14 @@ class TaskActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, labelTextView.text, Toast.LENGTH_SHORT).show()
         }
     }
-    fun initData(){
-        copters = mutableListOf<ItemModel>(
-            ItemModel("Tri Copter","asdasdasdas", Icons.triCopter),
-            ItemModel("Quad Copter","asdasdasdas", Icons.quadCopter),
-            ItemModel("Y4 Copter","asdasdasdas", Icons.y4Copter),
-            ItemModel("Hexa Copter","asdasdasdas", Icons.hexaCopter),
-            ItemModel("Y6 Copter","asdasdasdas", Icons.y6Copter),
-            ItemModel("Octo Copter","asdasdasdas", Icons.octaCopter),
-            ItemModel("X8 Copter","asdasdasdas", Icons.x8Copter))
+    private fun initData(){
+        copters = mutableListOf(
+            ItemModel("Tri Copter","asdasdasdasasdasdasdasasdasdasdasasdasdasdas", Icons.TriCopter),
+            ItemModel("Quad Copter","asdasdasdasasdasdasdasasdasdasdasasdasdasdas", Icons.QuadCopter),
+            ItemModel("Y4 Copter","asdasdasdasasdasdasdasasdasdasdasasdasdasdasasdasdasdas", Icons.Y4Copter),
+            ItemModel("Hexa Copter","asdasdasdasasdasdasdasasdasdasdasasdasdasdasasdasdasdasasdasdasdas", Icons.HexaCopter),
+            ItemModel("Y6 Copter","asdasdasdasasdasdasdasasdasdasdasasdasdasdasasdasdasdasasdasdasdas", Icons.Y6Copter),
+            ItemModel("Octo Copter","asdasdasdasasdasdasdasasdasdasdasasdasdasdasasdasdasdas", Icons.OctaCopter),
+            ItemModel("X8 Copter","asdasdasdasasdasdasdasasdasdasdasasdasdasdas", Icons.X8Copter))
     }
 }

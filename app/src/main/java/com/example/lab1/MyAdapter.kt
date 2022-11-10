@@ -8,7 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 
 class MyAdapter(context: Context, private var coptersList: MutableList<ItemModel>): BaseAdapter() {
-    private lateinit var layoutInflater: LayoutInflater
+    private var layoutInflater: LayoutInflater
 
     init {
         layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
