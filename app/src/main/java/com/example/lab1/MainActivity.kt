@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity() {
         scoreTV.text = score.toString()
 
         decBtn.setOnClickListener {
-            if (score > 0) score--
+            if (score <= 0) return@setOnClickListener
+            score--
             scoreTV.text = score.toString()
             saveScore()
         }
@@ -39,8 +40,6 @@ class MainActivity : AppCompatActivity() {
         task1Btn.setOnClickListener {
             startActivity(Intent(applicationContext, TaskActivity::class.java))
         }
-
-
     }
 
     private fun saveScore(){

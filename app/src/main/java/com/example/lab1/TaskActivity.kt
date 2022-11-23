@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -19,6 +20,7 @@ import kotlin.random.Random
 class TaskActivity : AppCompatActivity() {
     // набор данных, которые свяжем со списком
     private lateinit var copters: MutableList<ItemModel>
+    private val tag = "Toast button"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task1)
@@ -42,8 +44,8 @@ class TaskActivity : AppCompatActivity() {
         }
 
         val changeColorSwitch = findViewById<SwitchCompat>(R.id.change_color_switch)
-        changeColorSwitch.setOnCheckedChangeListener { _, b ->
-            if (b) {
+        changeColorSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
                 supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.argb(255, Random.nextInt(256), Random.nextInt(256), Random.nextInt(256))))
             } else{supportActionBar?.setBackgroundDrawable(ColorDrawable(getColor(R.color.purple_700)))}
         }
@@ -60,6 +62,7 @@ class TaskActivity : AppCompatActivity() {
         val showToastBtn = findViewById<Button>(R.id.show_toast_btn)
         showToastBtn.setOnClickListener {
             Toast.makeText(applicationContext, labelTextView.text, Toast.LENGTH_SHORT).show()
+            Log.i(tag, "clicked")
         }
     }
     private fun initData(){

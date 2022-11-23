@@ -32,6 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/regular_text_size"
+        tools:text="3"
         app:layout_constraintBottom_toTopOf="@id/nat_btn"
         app:layout_constraintEnd_toEndOf="@id/nat_btn"
         app:layout_constraintStart_toStartOf="@id/nat_btn"

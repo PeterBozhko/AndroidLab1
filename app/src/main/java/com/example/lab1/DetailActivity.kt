@@ -24,13 +24,11 @@ class DetailActivity : AppCompatActivity() {
         val iconIV = findViewById<ImageView>(R.id.icon)
         val imageIV = findViewById<ImageView>(R.id.image)
 
-
         imageIV.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.copter_icon))
         titleTV.text = title
         descriptionTV.text = description
         iconIV.setImageDrawable(AppCompatResources.getDrawable(this, icon))
         iconIV.scaleType = ImageView.ScaleType.FIT_CENTER
-
 
         val natTV = findViewById<TextView>(R.id.nat_text_view)
         val fibTV = findViewById<TextView>(R.id.fib_text_view)
@@ -53,17 +51,18 @@ class DetailActivity : AppCompatActivity() {
         }
 
         fibBtn.setOnClickListener {
-            fib+=fibPrevious
+            fib += fibPrevious
             fibPrevious = fib - fibPrevious
             fibTV.text = fib.toString()
         }
 
         colBtn.setOnClickListener {
-            if (col % 2 == 0) col/=2
+            if (col % 2 == 0) col /= 2
             else col = 3 * col + 1
             colTV.text = col.toString()
         }
     }
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt("nat", nat)
