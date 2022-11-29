@@ -1,4 +1,4 @@
-package com.example.lab1
+package com.example.lab1.task1
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.example.lab1.R
 
 class MyAdapter(context: Context, private var coptersList: MutableList<ItemModel>): BaseAdapter() {
     private var layoutInflater: LayoutInflater

@@ -1,4 +1,4 @@
-package com.example.lab1
+package com.example.lab1.task1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
+import com.example.lab1.R
 
 class DetailActivity : AppCompatActivity() {
     private var nat = 1

@@ -1,4 +1,4 @@
-package com.example.lab1
+package com.example.lab1.task1
 
 data class ItemModel(
     val title: String,

@@ -1,4 +1,4 @@
-package com.example.lab1
+package com.example.lab1.task1
 
 import android.content.Intent
 import android.graphics.Color
@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
+import com.example.lab1.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlin.random.Random
 
