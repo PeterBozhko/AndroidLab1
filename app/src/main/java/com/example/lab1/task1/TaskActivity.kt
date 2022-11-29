@@ -52,11 +52,19 @@ class TaskActivity : AppCompatActivity() {
         }
 
         val hideListBtn = findViewById<Button>(R.id.hide_list_btn)
+        fun ListView.hide(){
+            visibility = ListView.INVISIBLE
+        }
+        fun ListView.show(){
+            visibility = ListView.VISIBLE
+        }
         hideListBtn.setOnClickListener {
             if (coptersList.visibility == View.VISIBLE){
-                coptersList.visibility = View.INVISIBLE
+                coptersList.hide()
+                hideListBtn.text = getString(R.string.show_list)
             }else{
-                coptersList.visibility = View.VISIBLE
+                coptersList.show()
+                hideListBtn.text = getString(R.string.hide_list)
             }
         }
 
@@ -74,6 +82,7 @@ class TaskActivity : AppCompatActivity() {
             ItemModel("Hexa Copter","asdasdasdasasdasdasdasasdasdasdasasdasdasdasasdasdasdasasdasdasdas", Icons.HexaCopter),
             ItemModel("Y6 Copter","asdasdasdasasdasdasdasasdasdasdasasdasdasdasasdasdasdasasdasdasdas", Icons.Y6Copter),
             ItemModel("Octo Copter","asdasdasdasasdasdasdasasdasdasdasasdasdasdasasdasdasdas", Icons.OctaCopter),
-            ItemModel("X8 Copter","asdasdasdasasdasdasdasasdasdasdasasdasdasdas", Icons.X8Copter))
+            ItemModel("X8 Copter","asdasdasdasasdasdasdasasdasdasdasasdasdasdas", Icons.X8Copter)
+        )
     }
 }

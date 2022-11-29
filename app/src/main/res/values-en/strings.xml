@@ -19,4 +19,5 @@
     <string name="hide_list">Hide List</string>
     <string name="toast">Toast</string>
     <string name="accept_text">accept text</string>
+    <string name="show_list">Show List</string>
 </resources>

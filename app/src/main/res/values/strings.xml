@@ -18,4 +18,5 @@
     <string name="hide_list">Спрятать список</string>
     <string name="toast">Тост</string>
     <string name="accept_text">принять текст</string>
+    <string name="show_list">Показать список</string>
 </resources>
