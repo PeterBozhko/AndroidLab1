@@ -12,12 +12,19 @@ class DetailActivity : AppCompatActivity() {
     private var fib = 1L
     private var fibPrevious = 0L
     private var col = 7
+    private val titleTag = "Title"
+    private val descriptionTag = "Description"
+    private val iconTag = "Icon"
+    private val natTag = "nat"
+    private val fibTag = "fib"
+    private val fibPrevTag = "fibPrev"
+    private val colTag = "col"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_screen)
-        val title = intent.getStringExtra("Title")
-        val description = intent.getStringExtra("Description")
-        val icon = intent.getIntExtra("Icon", R.drawable.copter)
+        val title = intent.getStringExtra(titleTag)
+        val description = intent.getStringExtra(descriptionTag)
+        val icon = intent.getIntExtra(iconTag, R.drawable.copter)
 
         val titleTV = findViewById<TextView>(R.id.title)
         val descriptionTV = findViewById<TextView>(R.id.description)
@@ -37,10 +44,10 @@ class DetailActivity : AppCompatActivity() {
         val fibBtn = findViewById<Button>(R.id.fib_btn)
         val colBtn = findViewById<Button>(R.id.col_btn)
 
-        nat = savedInstanceState?.getInt("nat") ?: 1
-        fib = savedInstanceState?.getLong("fib") ?: 1L
-        fibPrevious = savedInstanceState?.getLong("fibPrev") ?: 0L
-        col = savedInstanceState?.getInt("col") ?: 7
+        nat = savedInstanceState?.getInt(natTag) ?: 1
+        fib = savedInstanceState?.getLong(fibTag) ?: 1L
+        fibPrevious = savedInstanceState?.getLong(fibPrevTag) ?: 0L
+        col = savedInstanceState?.getInt(colTag) ?: 7
         natTV.text = nat.toString()
         fibTV.text = fib.toString()
         colTV.text = col.toString()
@@ -65,17 +72,17 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt("nat", nat)
-        outState.putLong("fib", fib)
-        outState.putLong("fibPrev", fibPrevious)
-        outState.putInt("col", col)
+        outState.putInt(natTag, nat)
+        outState.putLong(fibTag, fib)
+        outState.putLong(fibPrevTag, fibPrevious)
+        outState.putInt(colTag, col)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        nat = savedInstanceState.getInt("nat")
-        fib = savedInstanceState.getLong("fib")
-        fibPrevious = savedInstanceState.getLong("fibPrev")
-        col = savedInstanceState.getInt("col")
+        nat = savedInstanceState.getInt(natTag)
+        fib = savedInstanceState.getLong(fibTag)
+        fibPrevious = savedInstanceState.getLong(fibPrevTag)
+        col = savedInstanceState.getInt(colTag)
     }
 }
