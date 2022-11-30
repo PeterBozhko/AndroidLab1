@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     private var score: Int = 0
     private val scoreKey = "score"
-    private lateinit var sharedPref :SharedPreferences
+    private lateinit var sharedPref: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

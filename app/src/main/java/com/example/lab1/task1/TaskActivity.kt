@@ -19,21 +19,24 @@ import kotlin.random.Random
 
 
 class TaskActivity : AppCompatActivity() {
-    // набор данных, которые свяжем со списком
     private lateinit var copters: MutableList<ItemModel>
     private val tag = "Toast button"
+    private val titleTag = "Title"
+    private val descriptionTag = "Description"
+    private val iconTag = "Icon"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task1)
+
         val coptersList: ListView = findViewById(R.id.list_view)
         initData()
-        val myAdapter= MyAdapter(applicationContext, copters)
+        val myAdapter = MyAdapter(applicationContext, copters)
         coptersList.adapter = myAdapter
         coptersList.setOnItemClickListener { _, _, i, _ ->
             val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("Title", copters[i].title)
-            intent.putExtra("Description", copters[i].descriprion)
-            intent.putExtra("Icon", copters[i].icon.res)
+            intent.putExtra(titleTag, copters[i].title)
+            intent.putExtra(descriptionTag, copters[i].descriprion)
+            intent.putExtra(iconTag, copters[i].icon.res)
             startActivity(intent)
         }
 
@@ -52,12 +55,14 @@ class TaskActivity : AppCompatActivity() {
         }
 
         val hideListBtn = findViewById<Button>(R.id.hide_list_btn)
+
         fun ListView.hide(){
             visibility = ListView.INVISIBLE
         }
         fun ListView.show(){
             visibility = ListView.VISIBLE
         }
+
         hideListBtn.setOnClickListener {
             if (coptersList.visibility == View.VISIBLE){
                 coptersList.hide()
@@ -74,6 +79,7 @@ class TaskActivity : AppCompatActivity() {
             Log.i(tag, "clicked")
         }
     }
+
     private fun initData(){
         copters = mutableListOf(
             ItemModel("Tri Copter","asdasdasdasasdasdasdasasdasdasdasasdasdasdas", Icons.TriCopter),
