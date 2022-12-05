@@ -20,4 +20,7 @@
     <string name="accept_text">принять текст</string>
     <string name="show_list">Показать список</string>
     <string name="by_peter_bozhko">by Peter Bozhko</string>
+    <string name="run">Старт</string>
+    <string name="stop">Стоп</string>
+    <string name="reset">Сброс</string>
 </resources>

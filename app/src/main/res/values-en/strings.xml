@@ -21,4 +21,7 @@
     <string name="accept_text">accept text</string>
     <string name="show_list">Show List</string>
     <string name="by_peter_bozhko">by Peter Bozhko</string>
+    <string name="run">Run</string>
+    <string name="stop">Stop</string>
+    <string name="reset">Reset</string>
 </resources>
