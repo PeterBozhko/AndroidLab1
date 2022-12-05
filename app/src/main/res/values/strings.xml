@@ -19,4 +19,5 @@
     <string name="toast">Тост</string>
     <string name="accept_text">принять текст</string>
     <string name="show_list">Показать список</string>
+    <string name="by_peter_bozhko">by Peter Bozhko</string>
 </resources>

@@ -20,4 +20,5 @@
     <string name="toast">Toast</string>
     <string name="accept_text">accept text</string>
     <string name="show_list">Show List</string>
+    <string name="by_peter_bozhko">by Peter Bozhko</string>
 </resources>
