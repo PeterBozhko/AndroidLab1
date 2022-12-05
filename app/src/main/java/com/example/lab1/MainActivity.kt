@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     private var score: Int = 0
     private val scoreKey = "score"
     private lateinit var sharedPref: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         val decBtn: FloatingActionButton = findViewById(R.id.decrease_btn)
         val incBtn: FloatingActionButton = findViewById(R.id.increase_btn)
         val task1Btn: Button = findViewById(R.id.task_1_btn)
+//        val appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
 
         sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
         score = sharedPref.getInt(scoreKey, score)
