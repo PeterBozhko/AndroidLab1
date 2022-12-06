@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import com.example.lab1.task1.TaskActivity
+import com.example.lab1.task2.Task2Activity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         val decBtn: FloatingActionButton = findViewById(R.id.decrease_btn)
         val incBtn: FloatingActionButton = findViewById(R.id.increase_btn)
         val task1Btn: Button = findViewById(R.id.task_1_btn)
+        val task2Btn: Button = findViewById(R.id.task_2_btn)
 //        val appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
 
         sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
@@ -42,6 +44,9 @@ class MainActivity : AppCompatActivity() {
         }
         task1Btn.setOnClickListener {
             startActivity(Intent(applicationContext, TaskActivity::class.java))
+        }
+        task2Btn.setOnClickListener {
+            startActivity(Intent(applicationContext, Task2Activity::class.java))
         }
     }
 

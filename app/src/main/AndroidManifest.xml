@@ -27,6 +27,10 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".task2.Task2Activity"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
