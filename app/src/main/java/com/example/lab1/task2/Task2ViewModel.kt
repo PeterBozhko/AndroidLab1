@@ -17,10 +17,10 @@ class Task2ViewModel: ViewModel() {
     private val locker: ReentrantLock = ReentrantLock()
     private val condition: Condition = locker.newCondition()
     private val tag = "Task2ViewModel"
-    init {
-        score1.value = 0
-        score2.value = 0
-    }
+//    init {
+//        score1.value = 0
+//        score2.value = 0
+//    }
     fun onRun(){
         isLock.set(false)
         if (!thread1.isAlive && !thread2.isAlive){
