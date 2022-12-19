@@ -49,9 +49,4 @@ class Task2Activity: AppCompatActivity() {
         super.onPause()
         viewModel.onStop()
     }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.onRun()
-    }
 }

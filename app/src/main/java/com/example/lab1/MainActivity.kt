@@ -16,6 +16,7 @@ import com.example.lab1.task1.TaskActivity
 import com.example.lab1.task2.Task2Activity
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 
 
 class MainActivity : AppCompatActivity() {
@@ -37,7 +38,11 @@ class MainActivity : AppCompatActivity() {
         val incBtn: FloatingActionButton = findViewById(R.id.increase_btn)
         val task1Btn: Button = findViewById(R.id.task_1_btn)
         val task2Btn: Button = findViewById(R.id.task_2_btn)
-//        val appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
+
+        val navView: NavigationView = findViewById(R.id.nav_view)
+        navView.setNavigationItemSelectedListener {
+            onOptionsItemSelected(it)
+        }
 
         sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
         score = sharedPref.getInt(scoreKey, score)
@@ -70,9 +75,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        when(item.itemId) {
             android.R.id.home -> {
                 drawer.openDrawer(GravityCompat.START)
+                return true
+            }
+            R.id.nav_task_1 -> {
+                startActivity(Intent(applicationContext, TaskActivity::class.java))
+                return true
+            }
+            R.id.nav_task_2 -> {
+                startActivity(Intent(applicationContext, Task2Activity::class.java))
                 return true
             }
         }
@@ -104,5 +117,10 @@ class MainActivity : AppCompatActivity() {
         }
         drawer.addDrawerListener(mDrawerToggle)
         mDrawerToggle.syncState()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        drawer.closeDrawer(GravityCompat.START)
     }
 }
