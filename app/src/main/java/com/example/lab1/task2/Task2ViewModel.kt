@@ -53,8 +53,9 @@ class Task2ViewModel: ViewModel() {
                     locker.unlock()
                 }
             }
-            score1.postValue(score1.value?.inc())
             sleep((1000 / thread1Frequency).toLong())
+            score1.postValue(score1.value?.inc())
+
         }
     }
     private val thread2 = Thread{

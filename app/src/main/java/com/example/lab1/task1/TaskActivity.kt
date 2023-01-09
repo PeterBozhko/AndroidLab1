@@ -14,6 +14,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import com.example.lab1.R
+import com.example.lab1.hide
+import com.example.lab1.show
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlin.random.Random
 
@@ -55,13 +57,6 @@ class TaskActivity : AppCompatActivity() {
         }
 
         val hideListBtn = findViewById<Button>(R.id.hide_list_btn)
-
-        fun ListView.hide(){
-            visibility = ListView.INVISIBLE
-        }
-        fun ListView.show(){
-            visibility = ListView.VISIBLE
-        }
 
         hideListBtn.setOnClickListener {
             if (coptersList.visibility == View.VISIBLE){
