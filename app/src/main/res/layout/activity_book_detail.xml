@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="@dimen/buttons_margin"
+    tools:context=".task3.presentation.BookDetailActivity">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:gravity="center"
+        android:hint="@string/book_name"
+        android:importantForAutofill="no" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+    <EditText
+        android:id="@+id/author_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:gravity="center"
+        android:hint="@string/author_id"
+        android:importantForAutofill="no" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+    <EditText
+        android:id="@+id/year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:gravity="center"
+        android:hint="@string/year"
+        android:importantForAutofill="no" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+    <Button
+        android:id="@+id/complete_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/complete"
+        />
+</androidx.appcompat.widget.LinearLayoutCompat>

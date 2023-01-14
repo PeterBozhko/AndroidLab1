@@ -25,4 +25,11 @@
     <string name="stop">Стоп</string>
     <string name="reset">Сброс</string>
     <string name="speed">Скорость</string>
+    <string name="book_library">Библиотека книг</string>
+    <string name="books">книги</string>
+    <string name="authors">авторы</string>
+    <string name="book_name">название</string>
+    <string name="author_id">id автора</string>
+    <string name="year">год</string>
+    <string name="complete">готово</string>
 </resources>

@@ -14,6 +14,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.lab1.task1.TaskActivity
 import com.example.lab1.task2.Task2Activity
+import com.example.lab1.task3.presentation.Task3Activity
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         val incBtn: FloatingActionButton = findViewById(R.id.increase_btn)
         val task1Btn: Button = findViewById(R.id.task_1_btn)
         val task2Btn: Button = findViewById(R.id.task_2_btn)
+        val task3Btn: Button = findViewById(R.id.task_3_btn)
 
         val navView: NavigationView = findViewById(R.id.nav_view)
         navView.setNavigationItemSelectedListener {
@@ -65,6 +67,9 @@ class MainActivity : AppCompatActivity() {
         task2Btn.setOnClickListener {
             startActivity(Intent(applicationContext, Task2Activity::class.java))
         }
+        task3Btn.setOnClickListener {
+            startActivity(Intent(applicationContext, Task3Activity::class.java))
+        }
     }
 
     private fun saveScore(){
@@ -86,6 +91,10 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.nav_task_2 -> {
                 startActivity(Intent(applicationContext, Task2Activity::class.java))
+                return true
+            }
+            R.id.nav_task_3 -> {
+                startActivity(Intent(applicationContext, Task3Activity::class.java))
                 return true
             }
         }
