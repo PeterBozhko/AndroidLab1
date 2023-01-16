@@ -4,16 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
-    android:id="@+id/books_activity"
-    tools:context=".task3.presentation.BooksActivity">
+    android:id="@+id/authors_activity"
+    tools:context=".task3.presentation.AuthorActivity">
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:gravity="center|start"
-        android:text="@string/book_library"
+        android:text="@string/authors_library"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
@@ -45,18 +44,18 @@
         app:layout_constraintTop_toTopOf="@id/authors_list"
         android:visibility="visible" />
 
-<!--    <ProgressBar-->
-<!--        android:id="@+id/progress_bar"-->
-<!--        android:progressDrawable="@drawable/progress_bar"-->
-<!--        android:secondaryProgress="100"-->
-<!--        style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
-<!--        android:layout_width="250dp"-->
-<!--        android:layout_height="250dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/parameters_list"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/parameters_list"-->
-<!--        app:layout_constraintStart_toStartOf="@id/parameters_list"-->
-<!--        app:layout_constraintTop_toTopOf="@id/parameters_list">-->
-<!--    </ProgressBar>-->
+    <!--    <ProgressBar-->
+    <!--        android:id="@+id/progress_bar"-->
+    <!--        android:progressDrawable="@drawable/progress_bar"-->
+    <!--        android:secondaryProgress="100"-->
+    <!--        style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
+    <!--        android:layout_width="250dp"-->
+    <!--        android:layout_height="250dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/parameters_list"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/parameters_list"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/parameters_list"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/parameters_list">-->
+    <!--    </ProgressBar>-->
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -70,6 +69,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/ic_plus"
         android:contentDescription="@string/fab_transformation_scrim_behavior" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

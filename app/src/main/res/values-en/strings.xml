@@ -28,8 +28,9 @@
     <string name="book_library">Book library</string>
     <string name="books">Books</string>
     <string name="authors">Authors</string>
-    <string name="book_name">название</string>
-    <string name="author_id">id автора</string>
-    <string name="year">год</string>
-    <string name="complete">готово</string>
+    <string name="book_name">Name</string>
+    <string name="author_id">Author id</string>
+    <string name="year">Year</string>
+    <string name="complete">complete</string>
+    <string name="authors_library">list of authors</string>
 </resources>

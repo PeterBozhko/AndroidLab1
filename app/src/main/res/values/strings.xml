@@ -32,4 +32,5 @@
     <string name="author_id">id автора</string>
     <string name="year">год</string>
     <string name="complete">готово</string>
+    <string name="authors_library">Список авторов</string>
 </resources>
