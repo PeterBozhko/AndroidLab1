@@ -1,8 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="@dimen/buttons_margin"
     tools:context=".task3.presentation.AuthorDetailActivity">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+    <EditText
+        android:id="@+id/first_name"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:inputType="text"
+        android:gravity="center"
+        android:hint="@string/first_name"
+        android:importantForAutofill="no" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+    <EditText
+        android:id="@+id/last_name"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:inputType="numberDecimal"
+        android:gravity="center"
+        android:hint="@string/last_name"
+        android:importantForAutofill="no" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+    <EditText
+        android:id="@+id/year"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:inputType="numberDecimal"
+        android:gravity="center"
+        android:hint="@string/year"
+        android:importantForAutofill="no" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+    <Button
+        android:id="@+id/complete_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/complete"
+        />
+</androidx.appcompat.widget.LinearLayoutCompat>

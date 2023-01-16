@@ -12,7 +12,7 @@
     <EditText
         android:id="@+id/name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:inputType="text"
         android:gravity="center"
         android:hint="@string/book_name"
@@ -23,7 +23,7 @@
     <EditText
         android:id="@+id/author_id"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:inputType="numberDecimal"
         android:gravity="center"
         android:hint="@string/author_id"
@@ -34,7 +34,7 @@
     <EditText
         android:id="@+id/year"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:inputType="numberDecimal"
         android:gravity="center"
         android:hint="@string/year"

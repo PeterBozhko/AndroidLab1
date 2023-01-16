@@ -20,21 +20,21 @@ import kotlinx.coroutines.launch
 
 class AuthorActivity: AppCompatActivity(), AuthorsAdapter.OnClickListeners {
     private val viewModel: AuthorsViewModel by viewModels()
-    private lateinit var progress_bar: ProgressBar
+    private lateinit var progressBar: ProgressBar
     private val authorOperationTag = "operation"
-    private val authorTag = "book"
-    private lateinit var authors_list: RecyclerView
-    private lateinit var snackbar_layout: ConstraintLayout
+    private val authorTag = "author"
+    private lateinit var authorsList: RecyclerView
+    private lateinit var snackbarLayout: ConstraintLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_author)
 
-        authors_list = findViewById(R.id.authors_list)
-        progress_bar = findViewById(R.id.progress_bar)
-        snackbar_layout = findViewById(R.id.authors_activity)
+        authorsList = findViewById(R.id.authors_list)
+        progressBar = findViewById(R.id.progress_bar)
+        snackbarLayout = findViewById(R.id.authors_activity)
 
         viewModel.authorsList.observe(this) {
-            authors_list.adapter = AuthorsAdapter(it, this)
+            authorsList.adapter = AuthorsAdapter(it, this)
         }
 
         val addBtn = findViewById<FloatingActionButton>(R.id.addButton)
@@ -48,30 +48,30 @@ class AuthorActivity: AppCompatActivity(), AuthorsAdapter.OnClickListeners {
     }
 
     private fun upload(){
-        progress_bar.visibility = View.VISIBLE
+        progressBar.visibility = View.VISIBLE
         CoroutineScope(Dispatchers.IO).launch {
             val message = viewModel.downloadAuthors()
             runOnUiThread{
-                progress_bar.visibility = View.GONE
+                progressBar.visibility = View.GONE
                 Toast.makeText(this@AuthorActivity, message, Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     override fun onEditClick(position: Int) {
-        val intent = Intent(this, BookDetailActivity::class.java)
+        val intent = Intent(this, AuthorDetailActivity::class.java)
         intent.putExtra(authorOperationTag, Operation.EDIT as Parcelable)
         intent.putExtra(authorTag, viewModel.authorsList.value?.get(position))
         startActivity(intent)
     }
 
     override fun onDeleteClick(position: Int) {
-        Snackbar.make(snackbar_layout, "Подтвердите действие", Snackbar.LENGTH_SHORT)
-            .setAction("UNDO") {
+        Snackbar.make(snackbarLayout, getString(R.string.confirm_action), Snackbar.LENGTH_SHORT)
+            .setAction(getString(R.string.ok)) {
                 deleteItem(position)}
             .show()
     }
     private fun deleteItem(position: Int){
-        Toast.makeText(applicationContext, "Undo action with id = $position", Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, "Delete action with id = $position", Toast.LENGTH_SHORT).show()
     }
 }

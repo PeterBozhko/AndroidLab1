@@ -18,7 +18,7 @@ class Task3Activity : AppCompatActivity() {
             startActivity(Intent(applicationContext, BooksActivity::class.java))
         }
         authorsBtn.setOnClickListener {
-            startActivity(Intent(applicationContext, BooksActivity::class.java))
+            startActivity(Intent(applicationContext, AuthorActivity::class.java))
         }
     }
 }

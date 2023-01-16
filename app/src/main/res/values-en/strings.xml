@@ -33,4 +33,8 @@
     <string name="year">Year</string>
     <string name="complete">complete</string>
     <string name="authors_library">list of authors</string>
+    <string name="first_name">first name</string>
+    <string name="last_name">last name</string>
+    <string name="confirm_action">confirm action</string>
+    <string name="ok">OK</string>
 </resources>

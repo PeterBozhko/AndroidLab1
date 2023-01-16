@@ -33,4 +33,8 @@
     <string name="year">год</string>
     <string name="complete">готово</string>
     <string name="authors_library">Список авторов</string>
+    <string name="first_name">имя</string>
+    <string name="last_name">фамилия</string>
+    <string name="confirm_action">Подтвердите действие</string>
+    <string name="ok">ок</string>
 </resources>
