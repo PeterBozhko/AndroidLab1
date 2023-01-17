@@ -32,7 +32,7 @@ object Interactor {
 
     }
 
-    fun downloadBooks(event: MutableLiveData<Event>): List<Book>?{
+    fun downloadBooks(event: MutableLiveData<Event>): MutableList<Book>?{
         val booksResponse = api.getBooks()
         event.postValue(Event.loading())
         try {
@@ -40,7 +40,7 @@ object Interactor {
             if (result.isSuccessful){
                 if (result.body() != null){
                     event.postValue(Event.success("Успешно загружено"))
-                    return result.body()!!.toList()
+                    return result.body()!!.toMutableList()
                 }else{
                     event.postValue(Event.success("Книги не найдены"))
                 }
@@ -73,17 +73,19 @@ object Interactor {
     fun deleteBookByID(id: Int, event: MutableLiveData<Event>){
         val booksResponse = api.deleteBook(id)
         event.postValue(Event.loading())
-        try {
-            val result = booksResponse.execute()
-            if (result.isSuccessful){
-                if (result.body() != null){
-                    event.postValue(Event.success("Успешно загружено"))
-                }else{
-                    event.postValue(Event.success("Запрос не обработан"))
-                }
-            } else event.postValue(Event.error(result.message(), result.code()))
-        }catch (e: Exception){
-            event.postValue(Event.error(e.message,null))
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val result = booksResponse.execute()
+                if (result.isSuccessful) {
+                    if (result.body() != null) {
+                        event.postValue(Event.success("Успешно загружено"))
+                    } else {
+                        event.postValue(Event.success("Запрос не обработан"))
+                    }
+                } else event.postValue(Event.error(result.message(), result.code()))
+            } catch (e: Exception) {
+                event.postValue(Event.error(e.message, null))
+            }
         }
     }
 

@@ -23,22 +23,22 @@ import kotlinx.coroutines.launch
 
 class BooksActivity : AppCompatActivity(), BooksAdapter.OnClickListeners {
     private val viewModel: BooksViewModel by viewModels()
-    private lateinit var progress_bar: ProgressBar
+    private lateinit var progressBar: ProgressBar
     private val bookOperationTag = "operation"
     private val bookTag = "book"
-    private lateinit var books_list: RecyclerView
-    private lateinit var snackbar_layout: ConstraintLayout
+    private lateinit var booksList: RecyclerView
+    private lateinit var snackbarLayout: ConstraintLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_books)
 
-        books_list = findViewById(R.id.books_list)
-        progress_bar = findViewById(R.id.progress_bar)
-        snackbar_layout = findViewById(R.id.books_activity)
+        booksList = findViewById(R.id.books_list)
+        progressBar = findViewById(R.id.progress_bar)
+        snackbarLayout = findViewById(R.id.books_activity)
 
         viewModel.booksList.observe(this){
             Log.d("Adapter_observer", it.toString())
-            books_list.adapter = BooksAdapter(it, this)
+            booksList.adapter = BooksAdapter(it, this)
         }
 
         viewModel.event.observe(this) {
@@ -51,9 +51,6 @@ class BooksActivity : AppCompatActivity(), BooksAdapter.OnClickListeners {
 
         val addBtn = findViewById<FloatingActionButton>(R.id.addButton)
         addBtn.setOnClickListener{
-//            CoroutineScope(Dispatchers.IO).launch {
-//                viewModel.getBookById(books_list.adapter!!.itemCount+1)
-//            }
             val intent = Intent(this, BookDetailActivity::class.java)
             intent.putExtra(bookOperationTag, Operation.CREATE as Parcelable)
             startActivity(intent)
@@ -63,16 +60,16 @@ class BooksActivity : AppCompatActivity(), BooksAdapter.OnClickListeners {
     }
 
     private fun viewOnLoading() {
-        progress_bar.visibility = View.VISIBLE
+        progressBar.visibility = View.VISIBLE
     }
 
     private fun viewOnSuccess(message: String?) {
-        progress_bar.visibility = View.GONE
+        progressBar.visibility = View.GONE
         Toast.makeText(this@BooksActivity, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun viewOnError(error: String?, code: Int?) {
-        progress_bar.visibility = View.GONE
+        progressBar.visibility = View.GONE
         Toast.makeText(this@BooksActivity, "$error ($code)", Toast.LENGTH_SHORT).show()
     }
     private fun upload(){
@@ -89,12 +86,16 @@ class BooksActivity : AppCompatActivity(), BooksAdapter.OnClickListeners {
     }
 
     override fun onDeleteClick(position: Int) {
-        Snackbar.make(snackbar_layout, "Подтвердите действие", Snackbar.LENGTH_SHORT)
-                .setAction("UNDO") {
-                    deleteItem(position)}
+        Snackbar.make(snackbarLayout, getString(R.string.confirm_action), Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string.ok)) {
+                    deleteItem(position)
+                }
                 .show()
     }
     private fun deleteItem(position: Int){
-        Toast.makeText(applicationContext, "Undo action with id = $position", Toast.LENGTH_SHORT).show()
+        viewModel.deleteBook((booksList.adapter as BooksAdapter).getItem(position))
+        Toast.makeText(applicationContext, "Remove book with id = ${(booksList.adapter as BooksAdapter).getItem(position).id}", Toast.LENGTH_SHORT).show()
+        (booksList.adapter as BooksAdapter).removeItem(position)
+        (booksList.adapter as BooksAdapter).notifyItemRemoved(position)
     }
 }

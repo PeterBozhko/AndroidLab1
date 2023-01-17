@@ -7,7 +7,7 @@ import com.example.lab1.R
 import com.example.lab1.task3.models.Book
 
 
-class BooksAdapter(private val dataSet: List<Book>, private val onClickListeners: OnClickListeners):
+class BooksAdapter(private val dataSet: MutableList<Book>, private val onClickListeners: OnClickListeners):
     RecyclerView.Adapter<BooksAdapter.ViewHolder>(){
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnCreateContextMenuListener{
@@ -76,4 +76,11 @@ class BooksAdapter(private val dataSet: List<Book>, private val onClickListeners
     }
 
     override fun getItemCount() = dataSet.size
+
+    fun getItem(position: Int): Book {
+        return dataSet[position]
+    }
+    fun removeItem(position: Int){
+        dataSet.removeAt(position)
+    }
 }

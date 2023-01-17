@@ -2,13 +2,12 @@ package com.example.lab1.task3.presentation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.lab1.RetrofitService
 import com.example.lab1.task3.domain.Interactor
 import com.example.lab1.task3.models.Book
 import com.example.lab1.task3.models.Event
 
 class BooksViewModel: ViewModel(){
-    val booksList = MutableLiveData<List<Book>>()
+    val booksList = MutableLiveData<MutableList<Book>>()
     val event = MutableLiveData<Event>()
     private val interactor = Interactor
     init {
@@ -38,5 +37,9 @@ class BooksViewModel: ViewModel(){
 //        }catch (e: Exception){
 //            event.postValue(Event.error(e.message,null))
 //        }
+    }
+
+    fun deleteBook(book: Book) {
+        interactor.deleteBookByID(book.id , event)
     }
 }
