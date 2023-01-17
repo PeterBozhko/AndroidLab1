@@ -2,7 +2,7 @@ package com.example.lab1.task3.presentation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.lab1.Common
+import com.example.lab1.RetrofitService
 import com.example.lab1.task3.models.Author
 
 class AuthorsViewModel: ViewModel() {
@@ -12,7 +12,7 @@ class AuthorsViewModel: ViewModel() {
     }
 
     fun downloadAuthors(): String {
-        val authorsResponse = Common.client.getAuthors()
+        val authorsResponse = RetrofitService.client.getAuthors()
         val result = authorsResponse.execute()
         if (result.isSuccessful){
             if (result.body() != null){

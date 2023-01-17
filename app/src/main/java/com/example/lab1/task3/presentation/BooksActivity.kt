@@ -3,6 +3,7 @@ package com.example.lab1.task3.presentation
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
+import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -12,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lab1.R
 import com.example.lab1.task3.models.Operation
+import com.example.lab1.task3.models.Status
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
@@ -34,12 +36,24 @@ class BooksActivity : AppCompatActivity(), BooksAdapter.OnClickListeners {
         progress_bar = findViewById(R.id.progress_bar)
         snackbar_layout = findViewById(R.id.books_activity)
 
-        viewModel.booksList.observe(this) {
+        viewModel.booksList.observe(this){
+            Log.d("Adapter_observer", it.toString())
             books_list.adapter = BooksAdapter(it, this)
+        }
+
+        viewModel.event.observe(this) {
+            when (it.status) {
+                Status.LOADING -> viewOnLoading()
+                Status.SUCCESS -> viewOnSuccess(it.data)
+                Status.ERROR -> viewOnError(it.data, it.code)
+            }
         }
 
         val addBtn = findViewById<FloatingActionButton>(R.id.addButton)
         addBtn.setOnClickListener{
+//            CoroutineScope(Dispatchers.IO).launch {
+//                viewModel.getBookById(books_list.adapter!!.itemCount+1)
+//            }
             val intent = Intent(this, BookDetailActivity::class.java)
             intent.putExtra(bookOperationTag, Operation.CREATE as Parcelable)
             startActivity(intent)
@@ -48,14 +62,22 @@ class BooksActivity : AppCompatActivity(), BooksAdapter.OnClickListeners {
         upload()
     }
 
-    private fun upload(){
+    private fun viewOnLoading() {
         progress_bar.visibility = View.VISIBLE
+    }
+
+    private fun viewOnSuccess(message: String?) {
+        progress_bar.visibility = View.GONE
+        Toast.makeText(this@BooksActivity, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun viewOnError(error: String?, code: Int?) {
+        progress_bar.visibility = View.GONE
+        Toast.makeText(this@BooksActivity, "$error ($code)", Toast.LENGTH_SHORT).show()
+    }
+    private fun upload(){
         CoroutineScope(Dispatchers.IO).launch {
-            val message = viewModel.downloadBooks()
-            runOnUiThread{
-                progress_bar.visibility = View.GONE
-                Toast.makeText(this@BooksActivity, message, Toast.LENGTH_SHORT).show()
-            }
+            viewModel.downloadBooks()
         }
     }
 

@@ -10,8 +10,15 @@ fun View.hide(){
 fun View.show(){
     visibility = View.VISIBLE
 }
-object Common {
-    private const val BASE_URL = "http://192.168.0.104:8080/"
+object RetrofitService {
+    private const val BASE_URL = "http://172.24.208.1:8081/"
     val client: RetrofitServices
         get() = RetrofitClient.getClient(BASE_URL).create(RetrofitServices::class.java)
+}
+
+operator fun <T> Collection<T>.plus(element: T): List<T> {
+    val result = ArrayList<T>(size + 1)
+    result.addAll(this)
+    result.add(element)
+    return result
 }
