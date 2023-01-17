@@ -1,5 +1,6 @@
 package com.example.lab1.task3.presentation
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
@@ -7,6 +8,8 @@ import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -26,6 +29,7 @@ class BooksActivity : AppCompatActivity(), BooksAdapter.OnClickListeners {
     private lateinit var progressBar: ProgressBar
     private val bookOperationTag = "operation"
     private val bookTag = "book"
+    private val bookIdTag = "id"
     private lateinit var booksList: RecyclerView
     private lateinit var snackbarLayout: ConstraintLayout
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +57,8 @@ class BooksActivity : AppCompatActivity(), BooksAdapter.OnClickListeners {
         addBtn.setOnClickListener{
             val intent = Intent(this, BookDetailActivity::class.java)
             intent.putExtra(bookOperationTag, Operation.CREATE as Parcelable)
-            startActivity(intent)
+//            startActivity(intent)
+            startForResult.launch(intent)
         }
 
         upload()
@@ -78,11 +83,22 @@ class BooksActivity : AppCompatActivity(), BooksAdapter.OnClickListeners {
         }
     }
 
+    private val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+        Log.d("Adapter_intent", "${result.resultCode} $intent, ${intent.getIntExtra(bookIdTag, 2345)}")
+        if (result.resultCode == Activity.RESULT_OK) {
+            val intent = result.data
+            val id = intent?.getIntExtra(bookIdTag, 0)
+            if (id != null && id != 0) viewModel.getBookById(id)
+            (booksList.adapter as BooksAdapter).notifyDataSetChanged()
+//            booksList.adapter?.notifyItemChanged(getItemPositionById(id))
+        }
+    }
     override fun onEditClick(position: Int) {
         val intent = Intent(this, BookDetailActivity::class.java)
         intent.putExtra(bookOperationTag, Operation.EDIT as Parcelable)
         intent.putExtra(bookTag, viewModel.booksList.value?.get(position))
-        startActivity(intent)
+//        startActivity(intent)
+        startForResult.launch(intent)
     }
 
     override fun onDeleteClick(position: Int) {

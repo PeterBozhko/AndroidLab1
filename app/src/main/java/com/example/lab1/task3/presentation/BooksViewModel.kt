@@ -1,10 +1,14 @@
 package com.example.lab1.task3.presentation
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.lab1.task3.domain.Interactor
 import com.example.lab1.task3.models.Book
 import com.example.lab1.task3.models.Event
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class BooksViewModel: ViewModel(){
     val booksList = MutableLiveData<MutableList<Book>>()
@@ -19,25 +23,25 @@ class BooksViewModel: ViewModel(){
     }
 
     fun getBookById(id: Int){
-//        val booksResponse = api.getBook(id)
-//        event.postValue(Event.loading())
-//        try {
-//            val result = booksResponse.execute()
-//            if (result.isSuccessful){
-//                if (result.body() != null){
-//                    Log.d("adapter", booksList.value?.filter { it == result.body() }.toString())
-//                    if (booksList.value?.filter { it == result.body() }.isNullOrEmpty()){
-//                        booksList.postValue(booksList.value?.plus(result.body()!!))
-//                    }
-//                    event.postValue(Event.success("Успешно загружено"))
-//                }else{
-//                    event.postValue(Event.success("Запрос не обработан"))
-//                }
-//            } else event.postValue(Event.error(result.message(), result.code()))
-//        }catch (e: Exception){
-//            event.postValue(Event.error(e.message,null))
-//        }
-    }
+        CoroutineScope(Dispatchers.IO).launch {
+            Log.d("adapter_find", id.toString())
+            val book = interactor.getBookById(id, event) ?: return@launch
+            Log.d("adapter_find_complete", book.toString())
+            val oldBook = booksList.value?.find { it.id == book.id }
+            if (oldBook == null){
+                booksList.value?.add(book)
+            }else{
+                oldBook.name = book.name
+                oldBook.author = book.author
+                oldBook.year = book.year
+            }
+
+//            booksList.value?.find { it.id == book.id }?.name = book.name
+//            booksList.value?.find { it.id == book.id }?.author = book.author
+//            booksList.value?.find { it.id == book.id }?.year = book.year
+//            booksList.value?.plus(book)
+            }
+        }
 
     fun deleteBook(book: Book) {
         interactor.deleteBookByID(book.id , event)
