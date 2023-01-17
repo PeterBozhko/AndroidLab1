@@ -6,13 +6,18 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import com.example.lab1.R
+import com.example.lab1.task3.domain.Interactor
 import com.example.lab1.task3.models.Book
+import com.example.lab1.task3.models.BookRequest
+import com.example.lab1.task3.models.Event
 import com.example.lab1.task3.models.Operation
 
 class BookDetailActivity : AppCompatActivity() {
     private val bookOperationTag = "operation"
     private val bookTag = "book"
+    private val interactor = Interactor
 
     private lateinit var name: EditText
     private lateinit var authorId: EditText
@@ -26,7 +31,7 @@ class BookDetailActivity : AppCompatActivity() {
 
 //        val operation = intent.getParcelableExtra(bookOperationTag, Operation::class.java)
 //        val book = intent.getParcelableExtra(bookTag, Book::class.java)
-
+        val event = MutableLiveData<Event>()
         val operation = intent.getParcelableExtra<Operation>(bookOperationTag)
         val book = intent.getParcelableExtra<Book>(bookTag)
         Log.d("Book", operation?.name ?: "null")
@@ -47,6 +52,7 @@ class BookDetailActivity : AppCompatActivity() {
 
         completeBtn.setOnClickListener {
             if (checkFields()){
+                interactor.createBook(BookRequest(name.text.toString(), Integer.valueOf(authorId.text.toString()), Integer.valueOf(year.text.toString())), event)
                 Toast.makeText(this, "Complete", Toast.LENGTH_SHORT).show()
             }else{
                 Toast.makeText(this, "Заполните поля", Toast.LENGTH_SHORT).show()
