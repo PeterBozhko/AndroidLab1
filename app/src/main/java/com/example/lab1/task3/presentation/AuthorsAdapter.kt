@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lab1.R
 import com.example.lab1.task3.models.Author
 
-class AuthorsAdapter(private val dataSet: List<Author>, private val onClickListeners: OnClickListeners):
+class AuthorsAdapter(private val dataSet: MutableList<Author>, private val onClickListeners: OnClickListeners):
     RecyclerView.Adapter<AuthorsAdapter.ViewHolder>(){
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnCreateContextMenuListener{
@@ -75,4 +75,10 @@ class AuthorsAdapter(private val dataSet: List<Author>, private val onClickListe
     }
 
     override fun getItemCount() = dataSet.size
+    fun getItem(position: Int): Author {
+        return dataSet[position]
+    }
+    fun removeItem(position: Int){
+        dataSet.removeAt(position)
+    }
 }
