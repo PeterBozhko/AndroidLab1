@@ -3,7 +3,7 @@ package com.example.lab1.task3.presentation
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.lab1.task3.domain.Interactor
+import com.example.lab1.task3.data.Interactor
 import com.example.lab1.task3.models.Book
 import com.example.lab1.task3.models.Event
 import kotlinx.coroutines.CoroutineScope

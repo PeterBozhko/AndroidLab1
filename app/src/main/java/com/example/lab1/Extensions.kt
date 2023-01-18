@@ -1,8 +1,8 @@
 package com.example.lab1
 
 import android.view.View
-import com.example.lab1.task3.domain.RetrofitClient
-import com.example.lab1.task3.domain.RetrofitServices
+import com.example.lab1.task3.data.RetrofitClient
+import com.example.lab1.task3.data.RetrofitServices
 
 fun View.hide(){
     visibility = View.INVISIBLE

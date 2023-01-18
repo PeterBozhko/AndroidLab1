@@ -1,6 +1,5 @@
 package com.example.lab1.task3.models
 
-import android.app.Application
 
 data class Event(val status: Status, val data: String?, val code: Int?) {
 

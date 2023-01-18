@@ -9,7 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.example.lab1.R
-import com.example.lab1.task3.domain.Interactor
+import com.example.lab1.task3.data.Interactor
 import com.example.lab1.task3.models.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

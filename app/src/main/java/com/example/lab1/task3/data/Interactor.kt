@@ -1,4 +1,4 @@
-package com.example.lab1.task3.domain
+package com.example.lab1.task3.data
 
 import androidx.lifecycle.MutableLiveData
 import com.example.lab1.RetrofitService

@@ -1,4 +1,4 @@
-package com.example.lab1.task3.domain
+package com.example.lab1.task3.data
 
 import com.example.lab1.task3.models.*
 import retrofit2.Call
