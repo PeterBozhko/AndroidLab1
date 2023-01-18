@@ -143,7 +143,7 @@ object Interactor {
         return null
     }
 
-    fun geAuthorById(id: Int, event: MutableLiveData<Event>): Author?{
+    fun getAuthorById(id: Int, event: MutableLiveData<Event>): Author?{
         val authorResponse = api.getAuthor(id)
         event.postValue(Event.loading())
         try {
