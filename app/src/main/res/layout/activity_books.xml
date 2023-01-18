@@ -45,20 +45,6 @@
         app:layout_constraintTop_toTopOf="@id/books_list"
         android:visibility="visible" />
 
-<!--    <ProgressBar-->
-<!--        android:id="@+id/progress_bar"-->
-<!--        android:progressDrawable="@drawable/progress_bar"-->
-<!--        android:secondaryProgress="100"-->
-<!--        style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
-<!--        android:layout_width="250dp"-->
-<!--        android:layout_height="250dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/parameters_list"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/parameters_list"-->
-<!--        app:layout_constraintStart_toStartOf="@id/parameters_list"-->
-<!--        app:layout_constraintTop_toTopOf="@id/parameters_list">-->
-<!--    </ProgressBar>-->
-
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addButton"
         android:layout_width="wrap_content"
@@ -70,6 +56,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/ic_plus"
         android:contentDescription="@string/fab_transformation_scrim_behavior" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

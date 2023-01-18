@@ -4,8 +4,9 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="12dp"
+    android:layout_marginBottom="12dp"
     app:cardBackgroundColor="@color/gray100"
-    app:cardCornerRadius="12dp">
+    app:cardCornerRadius="6dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,6 +40,7 @@
                 android:id="@+id/last_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
                 android:text=""
                 android:textSize="@dimen/regular_text_size" />
         </LinearLayout>
