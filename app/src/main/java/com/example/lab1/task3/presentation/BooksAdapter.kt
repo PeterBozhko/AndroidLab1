@@ -80,10 +80,6 @@ class BooksAdapter(private val dataSet: MutableList<Book>, private val onClickLi
     fun getItem(position: Int): Book {
         return dataSet[position]
     }
-
-    fun getItemPositionById(position: Int): Book {
-        return dataSet[position]
-    }
     fun removeItem(position: Int){
         dataSet.removeAt(position)
     }
